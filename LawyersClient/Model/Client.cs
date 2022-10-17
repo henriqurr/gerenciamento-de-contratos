@@ -22,6 +22,8 @@ namespace LawyersClient.Model
         public string Date { get; set; }
 
         // Contract
+        public int ProcessNumber { get; set; }
+
         public string LawyerName { get; set; }
 
         public decimal ContractValue { get; set; }
@@ -43,6 +45,7 @@ namespace LawyersClient.Model
                 OldName = update.Name;
                 Phone = update.Phone;
                 Email = update.Email;
+                ProcessNumber = update.ProcessNumber;
                 LawyerName = update.LawyerName;
                 ContractValue = update.ContractValue;
                 EntranceValue = update.EntranceValue;

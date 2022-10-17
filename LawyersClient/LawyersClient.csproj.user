@@ -4,6 +4,9 @@
     <Compile Update="Assets\View\About.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Assets\View\Authentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Assets\View\Insert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -13,7 +16,7 @@
     <Compile Update="Assets\View\Welcome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="Home.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

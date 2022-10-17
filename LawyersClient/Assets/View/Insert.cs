@@ -2,20 +2,12 @@
 using LawyersClient.Controller;
 using LawyersClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Contracts;
-using System.Drawing;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.ListViewItem;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LawyersClient.Assets.View
 {
@@ -47,6 +39,7 @@ namespace LawyersClient.Assets.View
                 inputName.Text = client.Name;
                 inputPhone.Text = client.Phone;
                 inputEmail.Text = client.Email;
+                inputProcessNumber.Text = client.ProcessNumber.ToString();
                 inputLawyer.Text = client.LawyerName;
                 inputValue.Text = client.ContractValue.ToString();
                 inputEntrance.Text = client.EntranceValue.ToString();
@@ -64,10 +57,20 @@ namespace LawyersClient.Assets.View
             {
                 client = new();
 
+                inputValue.Text = "R$ 2,500.00";
+                inputEntrance.Text = "R$ 1,450.00";
+                inputInstallments.Text = "1";
+
                 client.ContractSplit.Add(new ContractPayment
                 {
                     Percent = 4,
                     Name = "Imposto"
+                });
+
+                client.ContractSplit.Add(new ContractPayment
+                {
+                    Percent = 6,
+                    Name = "Comissão"
                 });
 
                 client.ContractSplit.Add(new ContractPayment
@@ -118,6 +121,8 @@ namespace LawyersClient.Assets.View
                     Name = "Envolvidos"
                 });
 
+                CalculeInstallmentsValue();
+                CalculeFinalValue();
                 CalculeDivisionItems(true);
             }
         }
@@ -170,29 +175,74 @@ namespace LawyersClient.Assets.View
                 {
                     // atualiza cliente
 
-                    client.Name = inputName.Text;
-                    client.Phone = inputPhone.Text;
-                    client.Email = inputEmail.Text;
-                    client.LawyerName = inputLawyer.Text;
-                    client.ContractValue = contractValue;
-                    client.EntranceValue = entranceValue;
-                    client.Installments = installments;
-                    client.InstallmentsValue = installmentsV;
+                    StringBuilder stringBuiler = new();
 
-                    if (ClientController.UpdateClient(client))
+                    string newName = inputName.Text;
+                    string newPhone = inputPhone.Text;
+                    string newEmail = inputEmail.Text;
+                    string newProcessNumber = inputProcessNumber.Text;
+                    string newLawyerName = inputLawyer.Text;
+
+                    if (!client.Name.Equals(newName))
                     {
-                        ClientController.LoadClients();
+                        stringBuiler.Append("Nome");
+                    }
+                    if (!client.Phone.Equals(newPhone))
+                    {
+                        stringBuiler.Append("; Telefone");
+                    }
+                    if (!client.Email.Equals(newEmail))
+                    {
+                        stringBuiler.Append("; Email");
+                    }
+                    if (!client.ProcessNumber.Equals(Convert.ToInt32(newProcessNumber)))
+                    {
+                        stringBuiler.Append("; N° do processo");
+                    }
+                    if (!client.LawyerName.Equals(newLawyerName))
+                    {
+                        stringBuiler.Append("; Advogado");
+                    }
+
+                    if (stringBuiler.Length == 0)
+                    {
                         Close();
+                        return;
+                    }
+
+                    if (LogHelper.Question($"Confirma as seguintes alterações: {(stringBuiler.Length > 0 ? (Environment.NewLine + Environment.NewLine) + stringBuiler : "")}?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        client.Name = newName;
+                        client.Phone = newPhone;
+                        client.Email = newEmail;
+                        client.ProcessNumber = Convert.ToInt32(newProcessNumber);
+                        client.LawyerName = newLawyerName;
+                        client.ContractValue = contractValue;
+                        client.EntranceValue = entranceValue;
+                        client.Installments = installments;
+                        client.InstallmentsValue = installmentsV;
+
+                        if (ClientController.UpdateClient(client))
+                        {
+                            ClientController.LoadClients();
+                            Close();
+                        }
                     }
                 }
                 else
                 {
                     // cria um cliente
 
+                    if (client == null)
+                    {
+                        client = new();
+                    }
+
                     client.Name = inputName.Text;
                     client.Phone = inputPhone.Text;
                     client.Email = inputEmail.Text;
                     client.Date = DateTime.Now.ToString("yy/MM/dd HH:mm");
+                    client.ProcessNumber = Convert.ToInt32(inputProcessNumber.Text);
                     client.LawyerName = inputLawyer.Text;
                     client.ContractValue = contractValue;
                     client.EntranceValue = entranceValue;
@@ -317,6 +367,11 @@ namespace LawyersClient.Assets.View
             {
                 int id = 0;
 
+                decimal contractValue = Convert.ToDecimal(Regex.Replace(new string(inputValue.Text.Where(char.IsDigit).ToArray()), "[^A-Za-z0-9 -]", ""));
+
+                if (contractValue < 0)
+                    contractValue = 0;
+
                 if (newAccount)
                 {
                     contractItems.Items.Clear();
@@ -326,7 +381,7 @@ namespace LawyersClient.Assets.View
                         ListViewItem item = new() { Text = $"{++id}" };
                         item.SubItems.Add(new ListViewSubItem() { Text = $"{payment.Percent}%" });
                         item.SubItems.Add(new ListViewSubItem() { Text = $"{payment.Name}" });
-                        item.SubItems.Add(new ListViewSubItem() { Text = string.Format("{0:C}", 0) });
+                        item.SubItems.Add(new ListViewSubItem() { Text = string.Format("{0:C}", payment.GetValue(contractValue) / 100) });
 
                         contractItems.Items.Add(item);
                     }
@@ -337,11 +392,6 @@ namespace LawyersClient.Assets.View
                 {
                     return;
                 }
-
-                decimal contractValue = Convert.ToDecimal(Regex.Replace(new string(inputValue.Text.Where(char.IsDigit).ToArray()), "[^A-Za-z0-9 -]", ""));
-
-                if (contractValue < 0)
-                    contractValue = 0;
 
                 contractItems.Items.Clear();
 
@@ -527,6 +577,25 @@ namespace LawyersClient.Assets.View
             }
             catch
             {
+            }
+        }
+
+        private void inputProcessNumber_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string formatValue = Regex.Replace(new string(inputProcessNumber.Text.Where(char.IsDigit).ToArray()), "[^A-Za-z0-9 -]", "");
+
+                inputProcessNumber.Text = formatValue;
+            }
+            catch
+            {
+                if (inputProcessNumber.Text != "")
+                {
+                    LogHelper.Message("Digite apenas números.", MessageBoxIcon.Warning);
+                    inputProcessNumber.Text = "";
+                    inputProcessNumber.Focus();
+                }
             }
         }
     }

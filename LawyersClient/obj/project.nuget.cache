@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "J1Ua1Bs8zX9baaEIcCPAq2exTahn/9I5LLpKmGP79LV+WPTafx1WPGENomJXxhaRQCeU4/wbE3bBlU22zmsLFg==",
+  "dgSpecHash": "UKH1shghkJ6ZcK2+0w8BPEttZGRjQp+cmPY/yLSgL3r6d/seNdxQKENuOC7BAPBaQzNZ5oe0ZcLuuBW6A5Draw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ueekd\\source\\repos\\LawyersClient\\LawyersClient\\LawyersClient.csproj",
+  "projectFilePath": "C:\\Users\\Henrique\\Documents\\Projects\\gerenciamento-de-contratos\\LawyersClient\\LawyersClient.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ueekd\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
-    "C:\\Users\\ueekd\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\ueekd\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\ueekd\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\Henrique\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
+    "C:\\Users\\Henrique\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Henrique\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Henrique\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

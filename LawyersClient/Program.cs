@@ -1,4 +1,5 @@
 using LawyersClient.Assets.View;
+using LawyersClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,22 @@ namespace LawyersClient
 {
     internal static class Program
     {
-        public static Form1 form;
+        public static Welcome welcome;
+        public static Home form;
         public static Insert formInsert;
+        public static User user = new User();
 
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+ 
         [STAThread]
         static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(form = new Form1());
+            Application.Run(welcome = new Welcome());
         }
     }
 }

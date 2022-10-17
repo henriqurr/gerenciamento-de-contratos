@@ -1,18 +1,11 @@
-﻿using LawyersClient.Assets.Tools;
+﻿using LawyersClient.Assets.Helper;
 using LawyersClient.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
 using System.IO;
-using LawyersClient.Assets.Helper;
-using System.Windows.Forms;
-using System.Net.Sockets;
 using System.Text.Encodings.Web;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using System.Xml.Linq;
+using System.Text.Json;
+using System.Windows.Forms;
 
 namespace LawyersClient.Controller
 {
@@ -32,22 +25,22 @@ namespace LawyersClient.Controller
 
                     using (StreamWriter writer = new("Clientes.json", false))
                     {
-                        string data = JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
 
                         writer.WriteLine(data);
                         writer.Dispose();
                     }
                 }
 
-                string bufferJson = File.ReadAllText("Clientes.json");
+                string bufferJson = File.Exists("Clientes.json") ? File.ReadAllText("Clientes.json") : "";
 
                 if (bufferJson.Length > 0)
                 {
+                    bufferJson = UserController.Decrypt(bufferJson, Program.user.Password);
                     clients.AddRange(JsonSerializer.Deserialize<List<Client>>(bufferJson)!);
                 }
 
                 Program.form.clientsTreeView.Nodes.Clear();
-
 
                 int count = 0;
                 foreach (var client in clients)
@@ -77,7 +70,7 @@ namespace LawyersClient.Controller
 
                     using (StreamWriter writer = new("Clientes.json", false))
                     {
-                        string data = JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
 
                         writer.WriteLine(data);
                         writer.Dispose();
@@ -90,7 +83,7 @@ namespace LawyersClient.Controller
                 {
                     using (StreamWriter writer = new("Clientes.json", false))
                     {
-                        string data = JsonSerializer.Serialize(backup, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                        string data = UserController.Encrypt(JsonSerializer.Serialize(backup, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
 
                         writer.WriteLine(data);
                         writer.Dispose();
@@ -126,7 +119,7 @@ namespace LawyersClient.Controller
 
                             using (StreamWriter writer = new("Clientes.json", false))
                             {
-                                string data = JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                                string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
 
                                 writer.WriteLine(data);
                                 writer.Dispose();
@@ -144,7 +137,7 @@ namespace LawyersClient.Controller
                 return false;
             }
 
-            LogHelper.Message($"Não foi possível remover cliente.", MessageBoxIcon.Error);
+            //LogHelper.Message($"Não foi possível remover cliente.", MessageBoxIcon.Error);
             return false;
         }
 
@@ -159,7 +152,7 @@ namespace LawyersClient.Controller
 
                     using (StreamWriter writer = new("Clientes.json", false))
                     {
-                        string data = JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
 
                         writer.WriteLine(data);
                         writer.Dispose();
@@ -223,7 +216,7 @@ namespace LawyersClient.Controller
 
                     using (StreamWriter writer = new("Clientes.json", false))
                     {
-                        string data = JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
 
                         writer.WriteLine(data);
                         writer.Dispose();
@@ -246,7 +239,7 @@ namespace LawyersClient.Controller
             return false;
         }
 
-        public static Client GetClient(string name)
+        public static Client? GetClient(string name)
         {
             foreach (Client client in clients)
             {
