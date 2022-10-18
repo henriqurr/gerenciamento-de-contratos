@@ -38,6 +38,7 @@
             this.processNumberColumn = new System.Windows.Forms.ColumnHeader();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.clientsTreeView = new System.Windows.Forms.TreeView();
             this.menuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.clientName = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,6 +120,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.clientsTreeView);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
@@ -131,13 +133,24 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(187, 428);
+            this.button3.Location = new System.Drawing.Point(6, 428);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(125, 23);
             this.button3.TabIndex = 6;
             this.button3.Text = "Adicionar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(135, 428);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(127, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Exportar em Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // clientsTreeView
             // 
@@ -197,11 +210,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(993, 489);
+            this.label1.Location = new System.Drawing.Point(967, 489);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.Size = new System.Drawing.Size(85, 15);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Versão 1.1";
+            this.label1.Text = "Versão 1.1 beta";
             // 
             // groupBox3
             // 
@@ -416,5 +429,6 @@
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ColumnHeader processNumberColumn;
+        private System.Windows.Forms.Button button1;
     }
 }

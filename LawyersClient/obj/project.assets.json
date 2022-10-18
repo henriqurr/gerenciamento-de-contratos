@@ -11,11 +11,11 @@
     "C:\\Users\\Henrique\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Henrique\\Documents\\Projects\\gerenciamento-de-contratos\\LawyersClient\\LawyersClient.csproj",
+      "projectUniqueName": "C:\\Users\\Henrique\\Documents\\Projects\\gerenciamento-de-contratos\\LawyersClient\\Gerenciador de Contratos.csproj",
       "projectName": "Gerenciador de Contratos",
-      "projectPath": "C:\\Users\\Henrique\\Documents\\Projects\\gerenciamento-de-contratos\\LawyersClient\\LawyersClient.csproj",
+      "projectPath": "C:\\Users\\Henrique\\Documents\\Projects\\gerenciamento-de-contratos\\LawyersClient\\Gerenciador de Contratos.csproj",
       "packagesPath": "C:\\Users\\Henrique\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Henrique\\Documents\\Projects\\gerenciamento-de-contratos\\LawyersClient\\obj\\",
       "projectStyle": "PackageReference",

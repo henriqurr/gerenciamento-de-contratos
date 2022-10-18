@@ -1,0 +1,24 @@
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\bin\Release\net5.0-windows\Gerenciador de Contratos.exe
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\bin\Release\net5.0-windows\Gerenciador de Contratos.deps.json
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\bin\Release\net5.0-windows\Gerenciador de Contratos.runtimeconfig.json
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\bin\Release\net5.0-windows\Gerenciador de Contratos.runtimeconfig.dev.json
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\bin\Release\net5.0-windows\Gerenciador de Contratos.dll
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\bin\Release\net5.0-windows\Gerenciador de Contratos.pdb
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.csproj.AssemblyReference.cache
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Assets.View.About.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Assets.View.Authentication.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Assets.View.Insert.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Assets.View.ItemContract.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Assets.View.Welcome.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Home.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador_de_Contratos.Properties.Resources.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.csproj.GenerateResource.cache
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.AssemblyInfoInputs.cache
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.AssemblyInfo.cs
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.csproj.CoreCompileInputs.cache
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.dll
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\refint\Gerenciador de Contratos.dll
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.pdb
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\Gerenciador de Contratos.genruntimeconfig.cache
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\ref\Gerenciador de Contratos.dll

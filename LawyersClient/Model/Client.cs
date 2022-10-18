@@ -13,6 +13,7 @@ namespace LawyersClient.Model
         // Client infos
         public string Name { get; set; }
 
+        [JsonIgnore]
         public string OldName { get; set; }
 
         public string Phone { get; set; }

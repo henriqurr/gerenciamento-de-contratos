@@ -42,3 +42,4 @@ C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\ob
 C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.genruntimeconfig.cache
 C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\ref\Gerenciador de Contratos.dll
 C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Home.resources
+C:\Users\Henrique\Documents\Projects\gerenciamento-de-contratos\LawyersClient\obj\Release\net5.0-windows\LawyersClient.Properties.Resources.resources

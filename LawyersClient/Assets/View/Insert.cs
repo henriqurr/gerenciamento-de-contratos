@@ -59,7 +59,7 @@ namespace LawyersClient.Assets.View
 
                 inputValue.Text = "R$ 2,500.00";
                 inputEntrance.Text = "R$ 1,450.00";
-                inputInstallments.Text = "1";
+                //inputInstallments.Text = "1";
 
                 client.ContractSplit.Add(new ContractPayment
                 {
@@ -176,32 +176,45 @@ namespace LawyersClient.Assets.View
                     // atualiza cliente
 
                     StringBuilder stringBuiler = new();
+                    stringBuiler.AppendLine();
+
+                    string oldName = client.Name;
+                    string oldPhone = client.Phone;
+                    string oldEmail = client.Email;
+                    string oldProcessNumber = client.ProcessNumber.ToString();
+                    string oldLawyerName = client.LawyerName;
+                    string oldInstallments = client.Installments.ToString();
 
                     string newName = inputName.Text;
                     string newPhone = inputPhone.Text;
                     string newEmail = inputEmail.Text;
                     string newProcessNumber = inputProcessNumber.Text;
                     string newLawyerName = inputLawyer.Text;
+                    string newInstallments = inputInstallments.Text;
 
-                    if (!client.Name.Equals(newName))
+                    if (!oldName.Equals(newName))
                     {
-                        stringBuiler.Append("Nome");
+                        stringBuiler.AppendLine($"Nome: {oldName} -> {newName}");
                     }
-                    if (!client.Phone.Equals(newPhone))
+                    if (!oldPhone.Equals(newPhone))
                     {
-                        stringBuiler.Append("; Telefone");
+                        stringBuiler.AppendLine($"Telefone: {oldPhone} -> {newPhone}");
                     }
-                    if (!client.Email.Equals(newEmail))
+                    if (!oldEmail.Equals(newEmail))
                     {
-                        stringBuiler.Append("; Email");
+                        stringBuiler.AppendLine($"Email: {oldEmail} -> {newEmail}");
                     }
-                    if (!client.ProcessNumber.Equals(Convert.ToInt32(newProcessNumber)))
+                    if (!oldProcessNumber.Equals(Convert.ToInt32(newProcessNumber)))
                     {
-                        stringBuiler.Append("; N° do processo");
+                        stringBuiler.AppendLine($"N° do processo: {oldProcessNumber} -> {newProcessNumber}");
                     }
-                    if (!client.LawyerName.Equals(newLawyerName))
+                    if (!oldLawyerName.Equals(newLawyerName))
                     {
-                        stringBuiler.Append("; Advogado");
+                        stringBuiler.AppendLine($"Advogado: {oldLawyerName} -> {newLawyerName}");
+                    }
+                    if (!oldInstallments.Equals(newInstallments))
+                    {
+                        stringBuiler.AppendLine($"Parcelas: {oldInstallments} -> {newInstallments}");
                     }
 
                     if (stringBuiler.Length == 0)
@@ -210,7 +223,7 @@ namespace LawyersClient.Assets.View
                         return;
                     }
 
-                    if (LogHelper.Question($"Confirma as seguintes alterações: {(stringBuiler.Length > 0 ? (Environment.NewLine + Environment.NewLine) + stringBuiler : "")}?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (LogHelper.Question($"Confirme as seguintes alterações: {(stringBuiler.Length > 0 ? (Environment.NewLine) + stringBuiler : "")}", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         client.Name = newName;
                         client.Phone = newPhone;
@@ -241,7 +254,7 @@ namespace LawyersClient.Assets.View
                     client.Name = inputName.Text;
                     client.Phone = inputPhone.Text;
                     client.Email = inputEmail.Text;
-                    client.Date = DateTime.Now.ToString("yy/MM/dd HH:mm");
+                    client.Date = DateTime.Now.ToString("yy/MM/dd HH:mm:ss");
                     client.ProcessNumber = Convert.ToInt32(inputProcessNumber.Text);
                     client.LawyerName = inputLawyer.Text;
                     client.ContractValue = contractValue;

@@ -5,8 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 using System.Windows.Forms;
 
 namespace LawyersClient.Controller
@@ -19,7 +17,7 @@ namespace LawyersClient.Controller
             {
                 User user = new();
 
-                string[] lines = File.ReadAllLines("Admin.config");
+                string[] lines = File.ReadAllLines("settings/Admin.config");
 
                 user.Login = lines[0].Split(':')[1].Trim();
                 user.Password = lines[1].Split(':')[1].Trim();
@@ -47,16 +45,23 @@ namespace LawyersClient.Controller
             byte[] clearBytes = Encoding.Unicode.GetBytes(Data);
             using (Aes encryptor = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                Rfc2898DeriveBytes pdb = new(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
                 encryptor.Key = pdb.GetBytes(32);
                 encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
+                using (MemoryStream ms = new())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    using (CryptoStream cs = new(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
                     {
                         cs.Write(clearBytes, 0, clearBytes.Length);
                         cs.Dispose();
-                        //cs.Close();
+
+                        try
+                        {
+                            cs.Close();
+                        }
+                        catch
+                        {
+                        }
                     }
                     Data = Convert.ToBase64String(ms.ToArray());
                 }
@@ -70,16 +75,23 @@ namespace LawyersClient.Controller
             byte[] cipherBytes = Convert.FromBase64String(Data);
             using (Aes encryptor = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                Rfc2898DeriveBytes pdb = new(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
                 encryptor.Key = pdb.GetBytes(32);
                 encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
+                using (MemoryStream ms = new())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    using (CryptoStream cs = new(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
                     {
                         cs.Write(cipherBytes, 0, cipherBytes.Length);
                         cs.Dispose();
-                        //cs.Close();
+
+                        try
+                        {
+                            cs.Close();
+                        }
+                        catch
+                        {
+                        }
                     }
                     Data = Encoding.Unicode.GetString(ms.ToArray());
                 }

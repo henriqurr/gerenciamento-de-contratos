@@ -1,4 +1,5 @@
 ﻿using LawyersClient.Assets.Helper;
+using LawyersClient.Assets.Tools;
 using LawyersClient.Assets.View;
 using LawyersClient.Controller;
 using LawyersClient.Model;
@@ -54,7 +55,7 @@ namespace LawyersClient
             {
                 if (ClientController.clients.Count >= 3)
                 {
-                    LogHelper.Message($"Não foi possível adicionar um novo cliente.{Environment.NewLine}Limite máximo de 3 atingido.", MessageBoxIcon.Information);
+                    LogHelper.Message($"Limite máximo de 3 clientes foi atingido.", MessageBoxIcon.Information);
                     return;
                 }
 
@@ -198,6 +199,20 @@ namespace LawyersClient
         {
             About about = new About();
             about.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Dump.JsonToExcel();
+
+                LogHelper.Message($"OK.", MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Message($"Ocorreu um erro interno.{Environment.NewLine}{ex.Message}", MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -146,7 +146,7 @@
             this.button1.Location = new System.Drawing.Point(730, 455);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Enviar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -260,10 +260,8 @@
             this.inputInstallments.MaxLength = 2;
             this.inputInstallments.Name = "inputInstallments";
             this.inputInstallments.PlaceholderText = "Quantidade de Parcelas";
-            this.inputInstallments.ReadOnly = true;
             this.inputInstallments.Size = new System.Drawing.Size(147, 23);
-            this.inputInstallments.TabIndex = 7;
-            this.inputInstallments.TabStop = false;
+            this.inputInstallments.TabIndex = 6;
             this.inputInstallments.TextChanged += new System.EventHandler(this.inputInstallments_TextChanged);
             // 
             // label4

@@ -3,7 +3,6 @@ using LawyersClient.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -19,30 +18,36 @@ namespace LawyersClient.Controller
             {
                 clients.Clear();
 
-                if (!File.Exists("Clientes.json"))
+                if (!Directory.Exists("database"))
+                {
+                    Directory.CreateDirectory("database");
+                }
+
+                if (!File.Exists("database/Clientes.json"))
                 {
                     LogHelper.Message($"Clientes.json não foi localizado, ele será criado mas nenhum cliente foi carregado.", MessageBoxIcon.Warning);
 
-                    using (StreamWriter writer = new("Clientes.json", false))
-                    {
-                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
-
-                        writer.WriteLine(data);
-                        writer.Dispose();
-                    }
+                    DatabaseController.WriteFile("database/Clientes.json", Program.user.Password, clients);
                 }
 
-                string bufferJson = File.Exists("Clientes.json") ? File.ReadAllText("Clientes.json") : "";
+                if (!File.Exists("database/Backup.json"))
+                {
+                    DatabaseController.WriteFile("database/Backup.json", "150322", clients);
+                }
+
+                string bufferJson = File.Exists("database/Clientes.json") ? File.ReadAllText("database/Clientes.json") : "";
 
                 if (bufferJson.Length > 0)
                 {
                     bufferJson = UserController.Decrypt(bufferJson, Program.user.Password);
+
                     clients.AddRange(JsonSerializer.Deserialize<List<Client>>(bufferJson)!);
                 }
 
                 Program.form.clientsTreeView.Nodes.Clear();
 
                 int count = 0;
+
                 foreach (var client in clients)
                 {
                     Program.form.clientsTreeView.Nodes.Add(client.Name);
@@ -53,7 +58,7 @@ namespace LawyersClient.Controller
             }
             catch (Exception ex)
             {
-                LogHelper.Message($"Ocorreu um erro erro ao carregar lista de clientes.{Environment.NewLine}{ex.Message}", MessageBoxIcon.Error);
+                LogHelper.Message($"Ocorreu um erro ao carregar lista de clientes.{Environment.NewLine}{ex.Message}", MessageBoxIcon.Error);
             }
         }
 
@@ -68,26 +73,15 @@ namespace LawyersClient.Controller
                 {
                     clients.Add(client);
 
-                    using (StreamWriter writer = new("Clientes.json", false))
-                    {
-                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
-
-                        writer.WriteLine(data);
-                        writer.Dispose();
-                    }
+                    DatabaseController.WriteFile("database/Clientes.json", Program.user.Password, clients);
+                    DatabaseController.WriteFile("database/Backup.json", "150322", clients);
 
                     LogHelper.Message($"Cliente adicionado com sucesso.", MessageBoxIcon.Information);
                     return true;
                 }
                 catch
                 {
-                    using (StreamWriter writer = new("Clientes.json", false))
-                    {
-                        string data = UserController.Encrypt(JsonSerializer.Serialize(backup, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
-
-                        writer.WriteLine(data);
-                        writer.Dispose();
-                    }
+                    DatabaseController.WriteFile("database/Clientes.json", Program.user.Password, backup);
                 }
                 finally
                 {
@@ -117,13 +111,8 @@ namespace LawyersClient.Controller
                         {
                             clients.Remove(client);
 
-                            using (StreamWriter writer = new("Clientes.json", false))
-                            {
-                                string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
-
-                                writer.WriteLine(data);
-                                writer.Dispose();
-                            }
+                            DatabaseController.WriteFile("database/Clientes.json", Program.user.Password, clients);
+                            DatabaseController.WriteFile("database/Backup.json", "150322", clients);
 
                             LogHelper.Message($"Cliente removido com sucesso.", MessageBoxIcon.Information);
                             return true;
@@ -150,13 +139,8 @@ namespace LawyersClient.Controller
                 {
                     c.Update(client);
 
-                    using (StreamWriter writer = new("Clientes.json", false))
-                    {
-                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
-
-                        writer.WriteLine(data);
-                        writer.Dispose();
-                    }
+                    DatabaseController.WriteFile("database/Clientes.json", Program.user.Password, clients);
+                    DatabaseController.WriteFile("database/Backup.json", "150322", clients);
 
                     LogHelper.Message($"Cliente atualizado com sucesso.", MessageBoxIcon.Information);
                     return true;
@@ -214,13 +198,8 @@ namespace LawyersClient.Controller
                         }
                     }
 
-                    using (StreamWriter writer = new("Clientes.json", false))
-                    {
-                        string data = UserController.Encrypt(JsonSerializer.Serialize(clients, new JsonSerializerOptions { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), Program.user.Password);
-
-                        writer.WriteLine(data);
-                        writer.Dispose();
-                    }
+                    DatabaseController.WriteFile("database/Clientes.json", Program.user.Password, clients);
+                    DatabaseController.WriteFile("database/Backup.json", "150322", clients);
 
                     if (type != 2)
                     {
