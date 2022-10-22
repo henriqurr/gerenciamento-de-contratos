@@ -1,11 +1,9 @@
 ﻿using LawyersClient.Assets.Helper;
 using LawyersClient.Controller;
 using LawyersClient.Model;
-using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace LawyersClient.Assets.View
 {
@@ -82,6 +80,16 @@ namespace LawyersClient.Assets.View
             {
                 LogHelper.Message($"Ocorreu um erro ao abrir edição de cliente.{Environment.NewLine}{ex.Message}", MessageBoxIcon.Error);
             }
+        }
+
+        private void inputPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            AuthenticationFunction();
+        }
+
+        private void inputLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            AuthenticationFunction();
         }
     }
 }

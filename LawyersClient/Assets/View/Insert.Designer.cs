@@ -146,7 +146,7 @@
             this.button1.Location = new System.Drawing.Point(730, 455);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Enviar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -261,7 +261,7 @@
             this.inputInstallments.Name = "inputInstallments";
             this.inputInstallments.PlaceholderText = "Quantidade de Parcelas";
             this.inputInstallments.Size = new System.Drawing.Size(147, 23);
-            this.inputInstallments.TabIndex = 6;
+            this.inputInstallments.TabIndex = 8;
             this.inputInstallments.TextChanged += new System.EventHandler(this.inputInstallments_TextChanged);
             // 
             // label4
@@ -280,8 +280,7 @@
             this.inputEntrance.Name = "inputEntrance";
             this.inputEntrance.PlaceholderText = "Digite aqui";
             this.inputEntrance.Size = new System.Drawing.Size(150, 23);
-            this.inputEntrance.TabIndex = 5;
-            this.inputEntrance.TabStop = false;
+            this.inputEntrance.TabIndex = 7;
             this.inputEntrance.TextChanged += new System.EventHandler(this.inputEntrance_TextChanged);
             this.inputEntrance.Leave += new System.EventHandler(this.inputEntrance_Leave);
             // 
@@ -301,8 +300,7 @@
             this.inputValue.Name = "inputValue";
             this.inputValue.PlaceholderText = "Digite aqui";
             this.inputValue.Size = new System.Drawing.Size(164, 23);
-            this.inputValue.TabIndex = 3;
-            this.inputValue.TabStop = false;
+            this.inputValue.TabIndex = 6;
             this.inputValue.TextChanged += new System.EventHandler(this.inputValue_TextChanged);
             this.inputValue.Leave += new System.EventHandler(this.inputValue_Leave);
             // 

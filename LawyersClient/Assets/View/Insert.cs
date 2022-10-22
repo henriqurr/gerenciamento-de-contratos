@@ -222,9 +222,9 @@ namespace LawyersClient.Assets.View
                     {
                         stringBuiler.AppendLine($"Valor de Contrato: {oldContractValue} -> {newContractValue}");
                     }
-                    if (!newEntranceValue.Equals(inputEntrance))
+                    if (!oldEntranceValue.Equals(newEntranceValue))
                     {
-                        stringBuiler.AppendLine($"Valor de Entrada: {newEntranceValue} -> {inputEntrance}");
+                        stringBuiler.AppendLine($"Valor de Entrada: {oldEntranceValue} -> {newEntranceValue}");
                     }
                     if (!oldInstallments.Equals(newInstallments))
                     {

@@ -55,6 +55,7 @@
             this.inputLogin.PlaceholderText = "Digite aqui";
             this.inputLogin.Size = new System.Drawing.Size(268, 23);
             this.inputLogin.TabIndex = 7;
+            this.inputLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inputLogin_KeyDown);
             // 
             // label1
             // 
@@ -74,6 +75,7 @@
             this.inputPassword.Size = new System.Drawing.Size(268, 23);
             this.inputPassword.TabIndex = 9;
             this.inputPassword.UseSystemPasswordChar = true;
+            this.inputPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inputPassword_KeyDown);
             // 
             // label2
             // 

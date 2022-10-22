@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Gerenciador de Contratos/1.2": {
+        "runtime": {
+          "Gerenciador de Contratos.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Gerenciador de Contratos/1.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
