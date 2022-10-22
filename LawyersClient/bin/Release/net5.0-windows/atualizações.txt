@@ -1,5 +1,10 @@
 Gerenciamento de Contratos
 
+Versão 1.2 (2022-10-21)
+
+-O valor de contrato e entrada agora são alteráveis.
+-Correção ao salvar contrato, que permitia campos ficarem vázios.
+
 Versão 1.1 (2022-10-17)
 
 -Tela de abertura ao iniciar, com nome e logo-marca.

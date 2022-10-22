@@ -210,11 +210,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(967, 489);
+            this.label1.Location = new System.Drawing.Point(993, 487);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 15);
+            this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Versão 1.1 beta";
+            this.label1.Text = "Versão 1.2";
             // 
             // groupBox3
             // 

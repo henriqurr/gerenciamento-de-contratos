@@ -156,7 +156,9 @@ namespace LawyersClient.Assets.View
 
                 if (string.IsNullOrEmpty(inputName.Text)
                  || string.IsNullOrEmpty(inputPhone.Text)
+                 || string.IsNullOrEmpty(inputEmail.Text)
                  || string.IsNullOrEmpty(inputLawyer.Text)
+                 || string.IsNullOrEmpty(inputProcessNumber.Text)
                  || string.IsNullOrEmpty(inputValue.Text)
                  || string.IsNullOrEmpty(inputEntrance.Text)
                  || string.IsNullOrEmpty(inputInstallments.Text))
@@ -183,6 +185,8 @@ namespace LawyersClient.Assets.View
                     string oldEmail = client.Email;
                     string oldProcessNumber = client.ProcessNumber.ToString();
                     string oldLawyerName = client.LawyerName;
+                    string oldContractValue = client.ContractValue.ToString();
+                    string oldEntranceValue = client.EntranceValue.ToString();
                     string oldInstallments = client.Installments.ToString();
 
                     string newName = inputName.Text;
@@ -190,6 +194,8 @@ namespace LawyersClient.Assets.View
                     string newEmail = inputEmail.Text;
                     string newProcessNumber = inputProcessNumber.Text;
                     string newLawyerName = inputLawyer.Text;
+                    string newContractValue = inputValue.Text;
+                    string newEntranceValue = inputEntrance.Text;
                     string newInstallments = inputInstallments.Text;
 
                     if (!oldName.Equals(newName))
@@ -211,6 +217,14 @@ namespace LawyersClient.Assets.View
                     if (!oldLawyerName.Equals(newLawyerName))
                     {
                         stringBuiler.AppendLine($"Advogado: {oldLawyerName} -> {newLawyerName}");
+                    }
+                    if (!oldContractValue.Equals(newContractValue))
+                    {
+                        stringBuiler.AppendLine($"Valor de Contrato: {oldContractValue} -> {newContractValue}");
+                    }
+                    if (!newEntranceValue.Equals(inputEntrance))
+                    {
+                        stringBuiler.AppendLine($"Valor de Entrada: {newEntranceValue} -> {inputEntrance}");
                     }
                     if (!oldInstallments.Equals(newInstallments))
                     {

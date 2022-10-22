@@ -279,7 +279,6 @@
             this.inputEntrance.MaxLength = 50;
             this.inputEntrance.Name = "inputEntrance";
             this.inputEntrance.PlaceholderText = "Digite aqui";
-            this.inputEntrance.ReadOnly = true;
             this.inputEntrance.Size = new System.Drawing.Size(150, 23);
             this.inputEntrance.TabIndex = 5;
             this.inputEntrance.TabStop = false;
@@ -301,7 +300,6 @@
             this.inputValue.MaxLength = 50;
             this.inputValue.Name = "inputValue";
             this.inputValue.PlaceholderText = "Digite aqui";
-            this.inputValue.ReadOnly = true;
             this.inputValue.Size = new System.Drawing.Size(164, 23);
             this.inputValue.TabIndex = 3;
             this.inputValue.TabStop = false;

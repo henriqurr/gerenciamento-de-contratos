@@ -5,14 +5,14 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>1.1.2022.10</FileVersion>
-    <AssemblyVersion>1.1.2022.10</AssemblyVersion>
+    <FileVersion>1.2.2022.10</FileVersion>
+    <AssemblyVersion>1.2.2022.10</AssemblyVersion>
     <Copyright>by Henrique R. and Vitória G.</Copyright>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageIcon>logo.png</PackageIcon>
     <Title>Gerenciador de Contratos</Title>
     <AssemblyName>Gerenciador de Contratos</AssemblyName>
-    <Version>1.1</Version>
+    <Version>1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
